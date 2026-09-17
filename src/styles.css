@@ -457,62 +457,78 @@ blockquote {
 }
 
 @media (max-width: 760px) {
-  .container { width: min(calc(100% - 36px), var(--container)); }
-  .header__inner { min-height: 76px; }
-  .brand { width: 188px; height: 52px; }
-  .brand__crop img { top: -119px; left: -44px; width: 295px; }
+  .container { width: min(calc(100% - 32px), var(--container)); }
+  .header__inner { min-height: 70px; }
+  .brand { width: 176px; height: 48px; }
+  .brand__crop img { top: -113px; left: -42px; width: 282px; }
   .hero__grid { display: flex; min-height: auto; flex-direction: column; gap: 0; }
-  .hero__content { padding: 72px 0 50px; }
-  .hero__visual { width: 100%; min-height: 560px; }
+  .hero__content { padding: 52px 0 30px; }
+  .hero__content > p { margin-bottom: 22px; font-size: 0.96rem; line-height: 1.55; }
+  .hero__visual { width: 100%; min-height: 420px; }
   .hero__visual > .organic-wash { top: 0; left: -12%; width: 124%; height: 108%; }
   .portrait--hero img { top: 1%; left: -13%; width: 130%; height: 108%; object-fit: contain; object-position: 50% 0; }
-  .hero__plant { right: -34px; bottom: 12px; }
-  .concerns, .approach-section, .services-section, .testimonial, .book-section, .about-section { padding: 76px 0; }
+  .hero__plant { right: -34px; bottom: -18px; width: 138px; height: 194px; }
+  .concerns, .approach-section, .services-section, .testimonial, .book-section, .about-section { padding: 54px 0; }
+  .concerns h2, .approach-section h2, .services-section h2 { margin-bottom: 28px; }
   .concern-grid { grid-template-columns: repeat(2, 1fr); }
   .approach-grid { grid-template-columns: repeat(3, 1fr); }
+  .concern { min-height: 150px; gap: 12px; padding: 16px 12px; font-size: 0.82rem; }
+  .concern > svg:first-child { width: 50px; height: 50px; }
+  .concern__arrow { right: 12px; bottom: 16px; width: 15px; height: 15px; }
   .concern { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .concern:nth-child(2n) { border-right: 0; }
   .concern:nth-last-child(-n + 2) { border-bottom: 0; }
-  .approach-item { padding-inline: 20px; border-bottom: 0; }
+  .approach-item { min-height: 132px; gap: 12px; padding: 16px 8px; border-bottom: 0; }
+  .approach-item svg { width: 46px; height: 46px; }
+  .approach-item p { font-size: 0.76rem; line-height: 1.4; }
   .approach-item:nth-child(2n) { border-right: 1px solid var(--line); }
   .approach-item:nth-child(3) { grid-column: auto; border-right: 0; }
   .about-section { padding-bottom: 0; }
   .about-grid { grid-template-columns: 1fr; }
-  .about__content { padding-bottom: 18px; }
-  .about__visual { min-height: 460px; }
+  .about__content { padding-bottom: 12px; }
+  .about__content h2 { margin-bottom: 20px; }
+  .about__content p { margin-bottom: 12px; font-size: 0.94rem; line-height: 1.55; }
+  .about__visual { min-height: 360px; }
   .portrait--about img { top: -1%; left: -2%; width: 92%; height: 112%; object-fit: cover; object-position: 50% 5%; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service { padding: 8px 12px 14px; }
   .service, .service:nth-child(3) { border-right: 1px solid var(--line); }
   .service:nth-child(2n) { border-right: 0; }
   .service:last-child { grid-column: 1 / -1; border-right: 0; }
-  .testimonial__inner { grid-template-columns: auto 1fr; gap: 20px; }
+  .service svg { width: 48px; height: 48px; margin-bottom: 12px; }
+  .service h3 { min-height: 0; margin-bottom: 6px; font-size: 0.84rem; }
+  .service p { font-size: 0.76rem; line-height: 1.4; }
+  .testimonial__inner { grid-template-columns: auto 1fr; gap: 16px; }
   .quote-mark { font-size: 5rem; }
+  blockquote { font-size: 1rem; line-height: 1.45; }
   .book__inner, .footer__main, .footer__bottom { align-items: flex-start; flex-direction: column; }
   .book__inner .button { width: 100%; }
-  .footer__main { padding: 32px 0; }
-  .footer__bottom { min-height: 0; padding: 24px 0; }
+  .footer__main { min-height: 0; padding: 26px 0; }
+  .footer__bottom { min-height: 0; padding: 18px 0; }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
-  h2 { margin-bottom: 36px; font-size: clamp(2rem, 10vw, 3rem); }
-  .hero__actions { align-items: stretch; flex-direction: column; }
-  .hero__actions .button, .hero__actions .text-link { width: 100%; }
-  .hero__visual { min-height: 440px; }
+  h1 { font-size: clamp(2.4rem, 11.5vw, 3.5rem); }
+  h2 { margin-bottom: 28px; font-size: clamp(1.9rem, 9vw, 2.65rem); }
+  .hero__actions { align-items: stretch; flex-direction: column; gap: 10px; }
+  .hero__actions .button { width: 100%; }
+  .hero__actions .text-link { width: fit-content; min-height: 38px; }
+  .hero__visual { min-height: 350px; }
   .portrait--hero img { top: 0; left: -18%; width: 140%; height: 107%; }
-  .hero__plant { width: 96px; height: 96px; }
-  .concern-grid, .approach-grid, .services-grid { grid-template-columns: 1fr; }
-  .concern, .concern:nth-child(2n), .concern:nth-last-child(-n + 2),
-  .approach-item, .approach-item:nth-child(2n), .service, .service:nth-child(2n), .service:nth-child(3) {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .concern:last-child, .approach-item:last-child, .service:last-child { border-bottom: 0; }
-  .approach-item:nth-child(3), .service:last-child { grid-column: auto; }
-  .about__visual { min-height: 400px; }
+  .hero__plant { right: -22px; bottom: -16px; width: 112px; height: 164px; }
+  .concern-grid, .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .concern { min-height: 136px; }
+  .approach-item { min-height: 126px; }
+  .service:last-child { grid-column: 1 / -1; }
+  .about__visual { min-height: 320px; }
   .about__visual > p { display: none; }
+  .about__plant { right: -42px; bottom: -44px; width: 126px; height: 190px; }
   .testimonial__inner { display: block; }
   .quote-mark { display: block; margin-bottom: 20px; }
+  .book-section { padding: 48px 0; }
+  .book__inner { gap: 24px; }
+  .book__inner h2 { font-size: clamp(1.85rem, 9vw, 2.5rem); }
+  .book__plant--left { left: -180px; bottom: -120px; width: 140px; height: 208px; }
   .site-footer nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 34px; }
 }
 

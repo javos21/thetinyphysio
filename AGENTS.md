@@ -17,3 +17,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep the Jane booking URL centralized so it can be replaced when the client account is configured.
 - Treat `references/homepage-sora.png` as the homepage visual source of truth. Preserve its broad organic portrait washes, full-width blush wave sections, line-art botanical accents, and spacious editorial rhythm rather than substituting rounded rectangular panels.
 - Use Caveat only for the short expressive handwritten movement notes shown in the approved homepage mock. Keep Sora for all functional UI and content typography.
+- On phones, prioritize a compact scan: keep treatment and service previews in two columns where legible, reduce section padding, and keep the portrait/CTA relationship tight without sacrificing touch-target size.

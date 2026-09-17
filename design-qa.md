@@ -8,6 +8,7 @@
 - Primary implementation capture: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/implementation-homepage-desktop.png`
 - Primary viewport: 1280 × 720 CSS px at device scale factor 1.
 - Responsive capture: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/implementation-homepage-tablet.png` at approximately 668 × 867 CSS px.
+- Compact mobile capture: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/implementation-mobile-compact.png` at approximately 668 × 867 CSS px in the narrow in-app browser surface.
 - Full hero comparison: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/design-qa-hero-comparison.png`
 - Focused section comparison: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/design-qa-focused-comparison.jpg`
 - State: light theme, homepage, default navigation, desktop and responsive layouts.
@@ -29,6 +30,7 @@ The final hero comparison restores the approved asymmetrical composition: an ivo
 
 - Fonts and typography: Sora remains the only functional UI and content family. Caveat is reserved for short handwritten movement notes and the footer signature, matching the source without introducing eyebrow text. Heading weight, compact leading, and line wrapping follow the mock.
 - Spacing and layout rhythm: desktop uses the mock's alternating editorial fields and broad section transitions. The responsive hero stacks without CTA overlap or horizontal scrolling.
+- Mobile density: phone rules reduce header, hero, section, and footer padding; retain two-column treatment/service previews and a three-column approach strip where labels remain legible; primary booking controls remain full-width and touch-friendly.
 - Colors and visual tokens: ivory, blush, raspberry rose, aubergine, and muted navy remain consistent with the source. Contrast is maintained on all functional text and actions.
 - Image quality and asset fidelity: the original logo and Anjali photography are preserved. The portrait cutout, organic wash, wave band, and botanical sprig are real raster assets rather than CSS-drawn approximations. Phosphor supplies the closest consistent thin-line service icons.
 - Copy and content: all required homepage sections and concise approved copy remain present. No eyebrow text or unverified claims were introduced.
@@ -60,6 +62,12 @@ The final hero comparison restores the approved asymmetrical composition: an ivo
 ### Final Pass
 
 The side-by-side hero and focused section comparisons show no remaining actionable P0, P1, or P2 mismatch. Residual differences are responsive adaptations of the tall concept board, not missing visual language.
+
+### Mobile Compact Pass
+
+- P2 mobile density: the previous phone rules stacked every pathway and service into single columns, creating unnecessary scroll and weakening scanability.
+  - Fix: reduced mobile spacing, kept treatment/services in two columns, retained a compact three-column approach strip, shortened the hero portrait field, and kept the booking CTA full-width.
+- The narrow browser inspection shows the revised hero, quick-find grid, approach strip, services grid, testimonial, booking panel, and footer without CTA overlap or horizontal overflow.
 
 ## Follow-up Polish
 
