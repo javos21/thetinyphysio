@@ -10,7 +10,6 @@ import {
   List,
   PersonSimpleRun,
   PersonSimpleTaiChi,
-  Plant,
   X,
 } from "@phosphor-icons/react";
 import { siteConfig } from "./siteConfig.js";
@@ -63,12 +62,19 @@ function BookingLink({ className = "button", children = "Book an appointment" })
   );
 }
 
-function Portrait({ className = "" }) {
+function Portrait({ className = "", cutout = false }) {
   return (
     <div className={`portrait ${className}`}>
-      <img src="/assets/anjali-original.jpg" alt="Anjali, physiotherapist and founder of The Tiny Physio" />
+      <img
+        src={cutout ? "/assets/anjali-cutout.png" : "/assets/anjali-original.jpg"}
+        alt="Anjali, physiotherapist and founder of The Tiny Physio"
+      />
     </div>
   );
+}
+
+function Botanical({ className = "" }) {
+  return <img className={className} src="/assets/botanical-sprig.png" alt="" aria-hidden="true" />;
 }
 
 export function App() {
@@ -118,14 +124,15 @@ export function App() {
               </div>
             </div>
             <div className="hero__visual">
-              <Portrait className="portrait--hero" />
+              <img className="organic-wash" src="/assets/organic-blush-wash.png" alt="" aria-hidden="true" />
+              <Portrait className="portrait--hero" cutout />
               <p className="hero__note">More movement for a brighter you.</p>
-              <Plant className="hero__plant" aria-hidden="true" weight="thin" />
+              <Botanical className="hero__plant" />
             </div>
           </div>
         </section>
 
-        <section className="concerns section--blush" aria-labelledby="concerns-title">
+        <section className="concerns wave-section" id="concerns" aria-labelledby="concerns-title">
           <div className="container">
             <h2 id="concerns-title">What brings you here?</h2>
             <div className="concern-grid">
@@ -148,13 +155,15 @@ export function App() {
               <a className="text-link" href="#about">Meet Anjali <ArrowRight aria-hidden="true" weight="bold" /></a>
             </div>
             <div className="about__visual">
-              <Portrait className="portrait--about" />
+              <img className="organic-wash" src="/assets/organic-blush-wash.png" alt="" aria-hidden="true" />
+              <Portrait className="portrait--about" cutout />
               <p>Movement can change so much.</p>
+              <Botanical className="about__plant" />
             </div>
           </div>
         </section>
 
-        <section className="approach-section section--blush" aria-labelledby="approach-title">
+        <section className="approach-section wave-section wave-section--reverse" id="approach" aria-labelledby="approach-title">
           <div className="container">
             <h2 id="approach-title">Care shaped around your life.</h2>
             <div className="approach-grid">
@@ -184,16 +193,17 @@ export function App() {
           </div>
         </section>
 
-        <section className="testimonial section--blush" aria-label="Client testimonial">
+        <section className="testimonial wave-section" aria-label="Client testimonial">
           <div className="container testimonial__inner">
             <span className="quote-mark" aria-hidden="true">“</span>
             <blockquote>Anjali was so easy to talk to. I felt at ease as she guided me through a plan that worked for me.</blockquote>
-            <Plant className="testimonial__plant" aria-hidden="true" weight="thin" />
+            <Botanical className="testimonial__plant" />
           </div>
         </section>
 
         <section className="book-section" id="book" aria-labelledby="book-title">
           <div className="container book__inner">
+            <Botanical className="book__plant book__plant--left" />
             <div><h2 id="book-title">Let’s take the next step, together.</h2><p>Book the care you deserve.</p></div>
             <BookingLink />
           </div>

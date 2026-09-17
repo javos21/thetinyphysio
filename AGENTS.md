@@ -15,3 +15,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep homepage copy concise and scannable; avoid long explanatory paragraphs and repeated service descriptions.
 - Preserve the supplied The Tiny Physio logo and Anjali photography as the primary brand assets.
 - Keep the Jane booking URL centralized so it can be replaced when the client account is configured.
+- Treat `references/homepage-sora.png` as the homepage visual source of truth. Preserve its broad organic portrait washes, full-width blush wave sections, line-art botanical accents, and spacious editorial rhythm rather than substituting rounded rectangular panels.
+- Use Caveat only for the short expressive handwritten movement notes shown in the approved homepage mock. Keep Sora for all functional UI and content typography.

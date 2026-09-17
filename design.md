@@ -16,7 +16,7 @@ The website is an informational, static marketing site for The Tiny Physio. Its 
 - Warm ivory base with blush, dusty rose, and soft cream surfaces.
 - Deep aubergine or navy for primary text and high-contrast calls to action.
 - Use Sora across display headings, navigation, body copy, and buttons. Create hierarchy through scale, weight, spacing, and line length rather than switching font families.
-- Preserve the supplied handwritten logo as the only script-style typography.
+- Preserve the supplied handwritten logo and use a restrained handwritten accent face only for expressive brand notes such as “More movement for a brighter you” and “Movement can change so much.”
 - Organic curves and restrained line illustrations may support the photography.
 - Use Anjali's supplied portrait and the existing The Tiny Physio logo as the primary brand assets.
 - Prefer spacing, typography, alignment, and subtle dividers over excessive cards, borders, or shadows.
@@ -36,6 +36,7 @@ Section headings must stand on their own. If context is necessary, express it th
 - Keep hero and section headings clean and compact, with controlled line breaks and approximately 1.0–1.1 line height.
 - Avoid decorative high-contrast serifs, overly soft editorial fonts, and additional script fonts.
 - The existing logo artwork is exempt from the type system and remains unchanged.
+- Handwritten accent family: **Caveat**, reserved for short decorative movement notes only. It must not be used for navigation, headings, buttons, body copy, labels, or eyebrow text.
 
 ## Content Density
 

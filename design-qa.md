@@ -3,56 +3,66 @@
 ## Evidence
 
 - Source visual truth: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/homepage-sora.png`
-- Source pixels: 738 × 2132 px, representing the approved 1440 px wide desktop design at reduced display density.
-- Implementation: `http://localhost:4173/`
-- Browser-rendered implementation capture: Codex in-app browser capture of `http://localhost:4173/` during this task.
-- Desktop comparison viewport: 1440 × 4160 CSS px, device scale factor 1, scaled to 20.5% beside the source for a single combined visual comparison.
-- Responsive inspection viewport: approximately 666 × 867 CSS px in the Codex in-app browser.
-- State: light theme, homepage, default navigation plus open mobile-menu and booking-anchor states.
+- Source pixels: 819 × 1920 px.
+- Browser-rendered implementation: `http://localhost:4173/`
+- Primary implementation capture: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/implementation-homepage-desktop.png`
+- Primary viewport: 1280 × 720 CSS px at device scale factor 1.
+- Responsive capture: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/implementation-homepage-tablet.png` at approximately 668 × 867 CSS px.
+- Full hero comparison: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/design-qa-hero-comparison.png`
+- Focused section comparison: `/Users/javedali/Documents/ChatGPT/Tiny Physio/references/design-qa-focused-comparison.jpg`
+- State: light theme, homepage, default navigation, desktop and responsive layouts.
+- Density normalization: source hero and focused-section crops were resized to 1280 × 720 before being placed directly beside the corresponding 1280 × 720 browser captures. The source is a tall concept board rather than a literal browser viewport.
 
 ## Full View Comparison
 
-The approved source and live implementation were rendered together in one browser comparison view. The implementation preserves the source hierarchy, section order, concise copy, Sora typography, blush and ivory palette, dark booking actions, portrait-led hero, treatment pathways, approach principles, five-service preview, testimonial, closing booking panel, and compact footer.
-
-The implementation is intentionally slightly shorter than the mockup because the user requested less reading and a neater page. This reduces repeated copy without changing the required homepage sections.
+The final hero comparison restores the approved asymmetrical composition: an ivory field, large Sora promise, cutout portrait over a freeform blush wash, a visible handwritten movement note, a long botanical line asset, and the original logo. The implementation adapts the 819 px-wide concept board into a wider responsive desktop grid while preserving its hierarchy and proportions.
 
 ## Focused Region Comparison
 
-- Hero: heading weight, line breaks, CTA priority, logo, palette, portrait placement, and decorative line icon were inspected at full browser size.
-- Meet Anjali: the portrait crop was inspected separately after the first pass exposed a face-cropping issue.
-- Mobile navigation: open and closed states were inspected, including the full-width booking action.
-- Booking section: the hero booking action was activated and confirmed to scroll to `#book`.
+- Quick-find section: the flat rectangle was replaced with a broad, irregular blush wave and four evenly separated treatment routes.
+- Meet Anjali: the portrait now sits over a freeform wash with the expressive Caveat note and botanical accent.
+- Approach: the three principles occupy a second full-width wave rather than a rectangular subsection.
+- Services: spacing, thin-line icons, compact descriptions, and the centered route to all services follow the source rhythm.
+- Testimonial and booking: the testimonial sits inside a curved blush band and transitions into the closing booking panel with botanical accents.
 
 ## Required Fidelity Surfaces
 
-- Fonts and typography: Sora 400–600 is used throughout the interface; the supplied logo remains the only script treatment. Heading scale, compact leading, weights, and wrapping match the selected direction. No Inter or eyebrow text is present.
-- Spacing and layout rhythm: desktop grids follow the mockup. Tablet and mobile layouts collapse without overlap or horizontal scrolling. Section spacing remains generous but is deliberately more concise than the source.
-- Colors and tokens: ivory, cream, pale blush, dusty rose, aubergine, and muted navy tokens consistently match the source. Text and action contrast remain clear.
-- Image quality and asset fidelity: the original supplied Anjali portrait and logo are used. No placeholder portrait, CSS illustration, or handcrafted SVG substitute is present. Interface icons come from the Phosphor icon library and share a consistent thin-line style.
-- Copy and content: all seven client-required homepage sections are present. Copy matches the approved concise design direction.
-- Accessibility and behavior: semantic headings and navigation, descriptive image alt text, visible focus rings, reduced-motion support, practical touch targets, responsive navigation, and functional anchor links are present.
-- Browser errors: no visible runtime errors surfaced in the in-app browser, the accessibility tree rendered completely, and the Vite development process remained clean during interaction testing.
+- Fonts and typography: Sora remains the only functional UI and content family. Caveat is reserved for short handwritten movement notes and the footer signature, matching the source without introducing eyebrow text. Heading weight, compact leading, and line wrapping follow the mock.
+- Spacing and layout rhythm: desktop uses the mock's alternating editorial fields and broad section transitions. The responsive hero stacks without CTA overlap or horizontal scrolling.
+- Colors and visual tokens: ivory, blush, raspberry rose, aubergine, and muted navy remain consistent with the source. Contrast is maintained on all functional text and actions.
+- Image quality and asset fidelity: the original logo and Anjali photography are preserved. The portrait cutout, organic wash, wave band, and botanical sprig are real raster assets rather than CSS-drawn approximations. Phosphor supplies the closest consistent thin-line service icons.
+- Copy and content: all required homepage sections and concise approved copy remain present. No eyebrow text or unverified claims were introduced.
+- Accessibility and behavior: semantic headings, image alternatives, visible focus rings, reduced-motion support, practical touch targets, responsive navigation, and working anchor/booking links remain intact.
+- Browser errors checked: no visible runtime error overlay or broken accessibility tree appeared in the in-app browser; Vite reported no runtime compilation errors during desktop, anchor-state, and responsive inspections.
 
 ## Comparison History
 
 ### Iteration 1
 
-- P2 logo crop: the supplied wordmark was partially clipped at responsive widths.
-  - Fix: measured the non-white source bounds and recalibrated the header, mobile, and footer crop positions.
-- P2 hero image crop: Anjali's face was outside the visible image area at narrower widths.
-  - Fix: removed the forced image height and object-cover crop, then adjusted responsive width and top positioning.
-- P2 About image crop: the portrait initially removed the face and later rendered too small.
-  - Fix: replaced the forced crop with proportional image sizing and separate desktop/mobile positioning.
-- P2 responsive density: the third care principle wrapped to a full-width second row at tablet width, making the section unnecessarily tall.
-  - Fix: retained a three-column approach layout at tablet width and reduced horizontal padding.
+- P1 organic-shape drift: the deployed page used rounded rectangular portrait panels and flat blush sections instead of the source's irregular washes and waves.
+  - Fix: added separate transparent organic-wash and full-width wave assets, then rebuilt the hero, concern, approach, testimonial, and portrait compositions around them.
+- P1 handwritten-note mismatch: the movement notes were rendered as italic Sora.
+  - Fix: added Caveat only for expressive handwritten notes and increased their scale and rotation to match the mock.
+- P1 missing decorative assets: small generic plant icons replaced the source's long botanical line work.
+  - Fix: added a transparent botanical sprig asset and placed it in the hero, About, testimonial, and booking transitions.
+- P2 portrait treatment: the original photograph was cropped inside geometric containers.
+  - Fix: restored the transparent Anjali cutout over the organic wash and tuned desktop and responsive positioning separately.
 
 ### Iteration 2
 
-The combined desktop comparison and direct responsive inspection showed no remaining actionable P0, P1, or P2 issues. The adjusted portrait crops, wordmark, responsive approach grid, footer, CTA hierarchy, and section rhythm all rendered correctly.
+- P2 tablet overlap: the portrait initially moved upward into the secondary hero action.
+  - Fix: reset the stacked portrait origin below the CTA row and tuned its responsive scale.
+- P2 closing-panel decoration: the left botanical sprig crossed the booking heading.
+  - Fix: moved the decoration outside the copy column while keeping a restrained edge accent.
+- P3 services action alignment: the services button sat at the left edge rather than centered beneath the grid.
+  - Fix: changed the fitted action to a centering flex box.
+
+### Final Pass
+
+The side-by-side hero and focused section comparisons show no remaining actionable P0, P1, or P2 mismatch. Residual differences are responsive adaptations of the tall concept board, not missing visual language.
 
 ## Follow-up Polish
 
-- P3: replace the temporary `#book` value in `src/siteConfig.js` with the final Jane booking URL when supplied.
-- P3: add final social profile links only when the client provides verified URLs.
+- P3: replace the temporary booking anchor in `src/siteConfig.js` with the final Jane URL when supplied.
 
 final result: passed
