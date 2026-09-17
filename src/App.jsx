@@ -16,10 +16,10 @@ import {
 import { siteConfig } from "./siteConfig.js";
 
 const concerns = [
-  { label: "Pelvic concerns", href: "#services", Icon: PersonSimpleTaiChi },
-  { label: "Pregnancy & postpartum", href: "#services", Icon: Baby },
-  { label: "Jaw pain & headaches", href: "#services", Icon: HeadCircuit },
-  { label: "Injury & movement", href: "#services", Icon: PersonSimpleRun },
+  { label: "Pelvic concerns", href: "/services#pelvic-health", Icon: PersonSimpleTaiChi },
+  { label: "Pregnancy & postpartum", href: "/services#pregnancy-postpartum", Icon: Baby },
+  { label: "Jaw pain & headaches", href: "/services#tmj-jaw-pain", Icon: HeadCircuit },
+  { label: "Injury & movement", href: "/services#orthopedic-physiotherapy", Icon: PersonSimpleRun },
 ];
 
 const approach = [
@@ -29,11 +29,11 @@ const approach = [
 ];
 
 const services = [
-  { title: "Pelvic health", detail: "Comfort, strength and confidence", Icon: PersonSimpleTaiChi },
-  { title: "Pregnancy & postpartum", detail: "Support through every stage", Icon: Baby },
-  { title: "TMJ & jaw pain", detail: "Ease tension and restore movement", Icon: HeadCircuit },
-  { title: "Headaches & migraine", detail: "Targeted, thoughtful care", Icon: Brain },
-  { title: "Orthopedic physiotherapy", detail: "Return to what you love", Icon: PersonSimpleRun },
+  { id: "pelvic-health", title: "Pelvic health", detail: "Comfort, strength and confidence", Icon: PersonSimpleTaiChi },
+  { id: "pregnancy-postpartum", title: "Pregnancy & postpartum", detail: "Support through every stage", Icon: Baby },
+  { id: "tmj-jaw-pain", title: "TMJ & jaw pain", detail: "Ease tension and restore movement", Icon: HeadCircuit },
+  { id: "headaches-migraine", title: "Headaches & migraine", detail: "Targeted, thoughtful care", Icon: Brain },
+  { id: "orthopedic-physiotherapy", title: "Orthopedic physiotherapy", detail: "Return to what you love", Icon: PersonSimpleRun },
 ];
 
 const qualifications = [
@@ -61,13 +61,15 @@ const aboutApproach = [
   },
 ];
 
-function getNavItems(isAboutPage) {
+function getNavItems(page) {
+  const isHomePage = page === "home";
+
   return [
-    ["Home", isAboutPage ? "/#home" : "#home"],
+    ["Home", isHomePage ? "#home" : "/#home"],
     ["About", "/about"],
-    ["Services", isAboutPage ? "/#services" : "#services"],
-    ["Resources", isAboutPage ? "/#resources" : "#resources"],
-    ["FAQ", isAboutPage ? "/#faq" : "#faq"],
+    ["Services", page === "services" ? "#services-top" : "/services"],
+    ["Resources", isHomePage ? "#resources" : "/#resources"],
+    ["FAQ", isHomePage ? "#faq" : "/#faq"],
   ];
 }
 
@@ -105,14 +107,15 @@ function Botanical({ className = "" }) {
   return <img className={className} src="/assets/botanical-sprig.png" alt="" aria-hidden="true" />;
 }
 
-function SiteHeader({ isAboutPage, menuOpen, setMenuOpen }) {
-  const navItems = getNavItems(isAboutPage);
-  const bookingHref = isAboutPage && siteConfig.bookingUrl === "#book" ? "#about-book" : siteConfig.bookingUrl;
+function SiteHeader({ page, menuOpen, setMenuOpen }) {
+  const navItems = getNavItems(page);
+  const isHomePage = page === "home";
+  const bookingHref = siteConfig.bookingUrl === "#book" && page !== "home" ? `#${page}-book` : siteConfig.bookingUrl;
 
   return (
-    <header className="site-header" id={isAboutPage ? undefined : "home"}>
+    <header className="site-header" id={isHomePage ? "home" : undefined}>
       <div className="container header__inner">
-        <Logo homeHref={isAboutPage ? "/#home" : "#home"} />
+        <Logo homeHref={isHomePage ? "#home" : "/#home"} />
         <button
           className="menu-toggle"
           type="button"
@@ -126,7 +129,7 @@ function SiteHeader({ isAboutPage, menuOpen, setMenuOpen }) {
         <nav className={`primary-nav${menuOpen ? " primary-nav--open" : ""}`} id="primary-navigation" aria-label="Primary navigation">
           <ul>
             {navItems.map(([label, href]) => {
-              const isCurrent = (isAboutPage && label === "About") || (!isAboutPage && label === "Home");
+              const isCurrent = (page === "about" && label === "About") || (page === "services" && label === "Services") || (isHomePage && label === "Home");
               return (
                 <li key={label}>
                   <a
@@ -148,19 +151,20 @@ function SiteHeader({ isAboutPage, menuOpen, setMenuOpen }) {
   );
 }
 
-function SiteFooter({ isAboutPage }) {
-  const navItems = getNavItems(isAboutPage);
+function SiteFooter({ page }) {
+  const navItems = getNavItems(page);
+  const isHomePage = page === "home";
 
   return (
-    <footer className="site-footer" id={isAboutPage ? undefined : "resources"}>
+    <footer className="site-footer" id={isHomePage ? "resources" : undefined}>
       <div className="container footer__main">
-        <Logo footer homeHref={isAboutPage ? "/#home" : "#home"} />
+        <Logo footer homeHref={isHomePage ? "#home" : "/#home"} />
         <nav aria-label="Footer navigation">
           {navItems.map(([label, href]) => <a href={href} key={label}>{label}</a>)}
-          <a href={isAboutPage ? "/#book" : "#book"}>Contact</a>
+          <a href={isHomePage ? "#book" : "/#book"}>Contact</a>
         </nav>
       </div>
-      <div className="container footer__bottom" id={isAboutPage ? undefined : "faq"}>
+      <div className="container footer__bottom" id={isHomePage ? "faq" : undefined}>
         <p>© {new Date().getFullYear()} The Tiny Physio. All rights reserved.</p>
         <p>Movement for a brighter you.</p>
       </div>
@@ -178,7 +182,7 @@ function HomePage() {
             <p>Personalized care for pelvic health, pregnancy, jaw pain and everyday movement.</p>
             <div className="hero__actions">
               <BookingLink />
-              <a className="text-link" href="#services">Explore services <ArrowRight aria-hidden="true" weight="bold" /></a>
+              <a className="text-link" href="/services">Explore services <ArrowRight aria-hidden="true" weight="bold" /></a>
             </div>
           </div>
           <div className="hero__visual">
@@ -247,7 +251,7 @@ function HomePage() {
               </article>
             ))}
           </div>
-          <a className="button button--soft" href="#services"><span>Explore all services</span><ArrowRight aria-hidden="true" weight="bold" /></a>
+          <a className="button button--soft" href="/services"><span>Explore all services</span><ArrowRight aria-hidden="true" weight="bold" /></a>
         </div>
       </section>
 
@@ -267,6 +271,98 @@ function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+function ServicesPage() {
+  const servicesBookingHref = siteConfig.bookingUrl === "#book" ? "#services-book" : siteConfig.bookingUrl;
+
+  return (
+    <div className="services-page">
+      <section className="services-hero" id="services-top" aria-labelledby="services-hero-title">
+        <div className="container services-hero__grid">
+          <div className="services-hero__content">
+            <h1 id="services-hero-title">Expert care for life’s changing seasons.</h1>
+            <p className="services-hero__lead">Support for the ways your body moves, changes and recovers.</p>
+            <p>Explore the areas of care offered by The Tiny Physio. We’ll start with your story and build from there.</p>
+            <BookingLink href={servicesBookingHref} />
+          </div>
+          <div className="services-hero__visual">
+            <img className="organic-wash" src="/assets/organic-blush-wash.png" alt="" aria-hidden="true" />
+            <Portrait className="portrait--services-hero" cutout />
+            <p className="services-hero__note">Care for every season.</p>
+            <Botanical className="services-hero__plant" />
+          </div>
+        </div>
+      </section>
+
+      <section className="service-directory wave-section" aria-labelledby="service-directory-title">
+        <div className="container service-directory__grid">
+          <div className="service-directory__intro">
+            <h2 id="service-directory-title">Find your starting point.</h2>
+            <p>There is no wrong place to begin. Explore the area that feels closest to what you need right now.</p>
+          </div>
+          <nav className="service-directory__nav" aria-label="Service areas">
+            {services.map(({ id, title }, index) => (
+              <a href={`#${id}`} key={id}>
+                <span className="service-directory__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span>{title}</span>
+                <ArrowRight aria-hidden="true" weight="bold" />
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      <section className="service-details-section" aria-labelledby="service-details-title">
+        <div className="container">
+          <div className="service-details__intro">
+            <h2 id="service-details-title">One thoughtful approach,<br />five areas of care.</h2>
+            <p>Whether you are working through a new concern or looking for support in a season of change, care is shaped around you.</p>
+          </div>
+          <div className="service-detail-list">
+            {services.map(({ id, title, detail, Icon }, index) => (
+              <article className="service-detail" id={id} key={id}>
+                <div className="service-detail__visual" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <Icon weight="thin" />
+                </div>
+                <div className="service-detail__content">
+                  <h3>{title}</h3>
+                  <p>{detail}.</p>
+                  <a className="text-link" href={servicesBookingHref}>Talk about your care <ArrowRight aria-hidden="true" weight="bold" /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="services-approach-section wave-section wave-section--reverse" aria-labelledby="services-approach-title">
+        <div className="container">
+          <h2 id="services-approach-title">Care shaped around your life.</h2>
+          <div className="approach-grid">
+            {approach.map(({ text, Icon }) => (
+              <div className="approach-item" key={text}>
+                <Icon aria-hidden="true" weight="thin" />
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="services-book-section" id="services-book" aria-labelledby="services-book-title">
+        <div className="container services-book__inner">
+          <Botanical className="services-book__plant" />
+          <div>
+            <h2 id="services-book-title">Not sure where to start?</h2>
+            <p>Let’s find the right next step, together.</p>
+          </div>
+          <BookingLink href={servicesBookingHref} />
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -369,21 +465,22 @@ function AboutPage() {
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const isAboutPage = window.location.pathname.replace(/\/+$/, "") === "/about";
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+  const page = pathname === "/about" ? "about" : pathname === "/services" ? "services" : "home";
 
   useEffect(() => {
     const closeMenu = () => setMenuOpen(false);
     window.addEventListener("hashchange", closeMenu);
-    document.title = isAboutPage ? "About Anjali | The Tiny Physio" : "The Tiny Physio";
+    document.title = page === "about" ? "About Anjali | The Tiny Physio" : page === "services" ? "Services | The Tiny Physio" : "The Tiny Physio";
     return () => window.removeEventListener("hashchange", closeMenu);
-  }, [isAboutPage]);
+  }, [page]);
 
   return (
     <div className="site-shell">
       <a className="skip-link" href="#main-content">Skip to content</a>
-      <SiteHeader isAboutPage={isAboutPage} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main id="main-content">{isAboutPage ? <AboutPage /> : <HomePage />}</main>
-      <SiteFooter isAboutPage={isAboutPage} />
+      <SiteHeader page={page} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <main id="main-content">{page === "about" ? <AboutPage /> : page === "services" ? <ServicesPage /> : <HomePage />}</main>
+      <SiteFooter page={page} />
     </div>
   );
 }
